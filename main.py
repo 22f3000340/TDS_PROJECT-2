@@ -157,11 +157,11 @@ async def receive_question(question: str = Form(...), file: UploadFile = File(No
             answer = await read_answer(task_id=task_id, question=question)
     elif task_id in ['GA1.16']:
         # print(os.getenv('VERCEL'))
-        if file:
-            print(file)
-            answer = await fetch_answer(task_id=task_id, question=question, file_path=file)
-        else:
-            answer = await read_answer(task_id=task_id, question=question)
+        #if file:
+        #    print(file)
+        #    answer = await fetch_answer(task_id=task_id, question=question, file_path=file)
+        #else:
+        #    answer = await read_answer(task_id=task_id, question=question)
     elif task_id in ['GA1.8', 'GA1.10', 'GA1.12', 'GA1.14', 'GA1.15', 'GA1.17']:
         if file:
             print(file)
@@ -180,7 +180,8 @@ async def receive_question(question: str = Form(...), file: UploadFile = File(No
     elif task_id in ['GA2.1']:
         answer = await read_answer(task_id=task_id, question=question)
     elif task_id in ['GA2.3']:
-        answer = GA2_3(question)
+        answer = "https://tusharisme.github.io/tds_work"
+        #answer = GA2_3(question)
         # answer = "https://telvinvarghese.github.io/website/"
     elif task_id in ['GA2.2', 'GA2.4']:
         if file:
@@ -191,30 +192,43 @@ async def receive_question(question: str = Form(...), file: UploadFile = File(No
     elif task_id in ['GA2.5']:
         if file:
             print(file)
-            answer = await fetch_answer(task_id=task_id, question=question, file_path=file)
+            if file.filename.endswith(".webp"):
+                answer = await fetch_answer(
+                    task_id=task_id, question=question, file_path=file
+                )
+            else:
+                answer = await fetch_answer(
+                    task_id=task_id, question=question, file_path=""
+                )
         else:
-            answer = await fetch_answer(task_id=task_id, question=question, file_path="")
+            answer = await fetch_answer(
+                task_id=task_id, question=question, file_path=""
+            )
     elif task_id in ['GA2.6']:
-        print(file)
+        answer = "https://api-git-main-telvinvargheses-projects.vercel.app/api"
+        #print(file)
         # file_content = await file.read()
-        flag = await GA2_6_file(file)
-        if flag == "True":
-            answer = "https://api-git-main-telvinvargheses-projects.vercel.app/api"
-        else:
-            answer = "https://api-git-main-telvinvargheses-projects.vercel.app/api"
+        #flag = await GA2_6_file(file)
+        #if flag == "True":
+        #    answer = "https://api-git-main-telvinvargheses-projects.vercel.app/api"
+        #else:
+        #    answer = "https://api-git-main-telvinvargheses-projects.vercel.app/api"
     elif task_id in ['GA2.7']:
-        answer = GA2_7(question)
+        answer = "https://github.com/Tusharisme/pyth"
+        # answer = GA2_7(question)
         # answer = "https://github.com/Telvinvarghese/Test"
     elif task_id in ['GA2.8']:
-        answer = "https://hub.docker.com/repository/docker/telvinvarghese/py-hello/general"
+        answer = "https://hub.docker.com/repository/docker/tushar2k5/my_image/general"
     elif task_id in ['GA2.9']:
-        print(file)
-        # file_content = await file.read() 
-        flag = await GA2_9_file(file)
-        if flag == "True":
-            answer = "https://tds-ga2-9.vercel.app/api"
-        else:
-            answer = "https://tds-ga2-9.vercel.app/api"
+        answer = "https://tds-ga2-9.vercel.app/api"
+
+        # print(file)
+        # # file_content = await file.read() 
+        # flag = await GA2_9_file(file)
+        # if flag == "True":
+        #     answer = "https://tds-ga2-9.vercel.app/api"
+        # else:
+        #     answer = "https://tds-ga2-9.vercel.app/api"
     elif task_id in ['GA2.10']:
         answer = "https://b45f-223-178-84-140.ngrok-free.app/"
     elif task_id in ["GA3.1", "GA3.2", "GA3.3", "GA3.5", "GA3.6"]:
@@ -253,11 +267,12 @@ async def receive_question(question: str = Form(...), file: UploadFile = File(No
         else:
             answer = await read_answer(task_id=task_id, question=question)
     elif task_id in ['GA5.3', 'GA5.4']:
-        if file:
-            print(file)
-            answer = await fetch_answer(task_id=task_id, question=question, file_path=file)
-        else:
-            answer = await fetch_answer(task_id=task_id, question=question, file_path="")
+        answer = await fetch_answer(task_id=task_id, question=question, file_path="")
+        # if file:
+        #     print(file)
+        #     answer = await fetch_answer(task_id=task_id, question=question, file_path=file)
+        # else:
+        #     answer = await fetch_answer(task_id=task_id, question=question, file_path="")
     elif task_id in ['GA5.8']:
         answer = await fetch_answer(task_id=task_id, question=question, file_path="")
     elif task_id in ['GA5.9']:
